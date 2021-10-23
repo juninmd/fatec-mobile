@@ -1,5 +1,3 @@
-# Fatec Franca App
+# Fatec Mobile :) 
 
-<https://fatec-franca.herokuapp.com/>
-
-<https://fatec-franca.firebaseapp.com>
+Seu novo aplicativo mobile super simples e acessível :)
