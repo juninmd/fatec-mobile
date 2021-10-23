@@ -1,8 +1,8 @@
 {
   "name": "fatec-mobile",
   "version": "1.0.0",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "Rafaela Farros",
+  "homepage": "https://fatecgarca.cps.sp.gov.br/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -64,5 +64,5 @@
     "tslint": "~5.15.0",
     "typescript": "~3.4.3"
   },
-  "description": "An Ionic project"
+  "description": "Fatec Mobile"
 }
