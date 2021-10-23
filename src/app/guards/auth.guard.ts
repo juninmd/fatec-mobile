@@ -12,10 +12,6 @@ export class AuthGuard implements CanActivate {
   ): Observable<boolean> | Promise<boolean> | boolean {
     const userAuthenticated = localStorage.getItem('session') !== null; // Get the current authentication state from a Service!
 
-    if (userAuthenticated) {
-      return true;
-    } else {
-      return false;
-    }
+   return !!userAuthenticated; 
   }
 }
