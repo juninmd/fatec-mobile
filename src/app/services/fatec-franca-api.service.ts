@@ -19,43 +19,43 @@ export class FatecFrancaApiService {
 
   private loader: HTMLIonLoadingElement;
 
-  async login(params: any) {
+  login(params: any) {
     return this.request({ params, url: 'login', validate: false });
   }
 
-  async getName() {
+  getName() {
     return this.request({ url: 'name' });
   }
 
-  async getProfile() {
+  getProfile() {
     return this.request({ url: 'profile' });
   }
 
-  async getAcademicCalendar() {
+  getAcademicCalendar() {
     return this.request({ url: 'academic-calendar' });
   }
 
-  async getSchoolGrade() {
+  getSchoolGrade() {
     return this.request({ url: 'school-grade' });
   }
 
-  async getHistory() {
+  getHistory() {
     return this.request({ url: 'history' });
   }
 
-  async getSchedules() {
+  getSchedules() {
     return this.request({ url: 'schedules' });
   }
 
-  async getRegisteredEmails() {
+  getRegisteredEmails() {
     return this.request({ url: 'emails' });
   }
 
-  async getPartialGrades() {
+  getPartialGrades() {
     return this.request({ url: 'partialgrades' });
   }
 
-  async getDisciplines() {
+  getDisciplines() {
     return this.request({ url: 'disciplines' });
   }
 
