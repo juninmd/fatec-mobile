@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Grade</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+
+  <div padding>
+    <ion-item color="dark">
+      <ion-button color="success">
+        Aprovado em: {{ status.aprovado }}
+      </ion-button>
+
+      <ion-button color="tertiary">
+        Cursando: {{ status.cursando }}
+      </ion-button>
+
+    </ion-item>
+
+    <ion-item color="dark">
+      <ion-button color="success">
+        Dispensado em: {{ status.dispensado }}
+      </ion-button>
+
+      <ion-button size="small" color="danger">
+        Reprovado em: {{ status.reprovado }}
+      </ion-button>
+    </ion-item>
+
+    <ion-item justify-content-center color="dark">
+      <ion-button size="small" color="light">
+        Falta Cursar: {{ status.naoCursando }}
+      </ion-button>
+    </ion-item>
+  </div>
+
+  <div *ngFor="let semester of semesters; index as i">
+    <ion-item color="dark">
+      <ion-label>Semestre: {{ semester.number }}</ion-label>
+    </ion-item>
+
+    <ion-card *ngFor="let discipline of semester.disciplines; index as i" [color]="discipline.color">
+      <ion-card-header>
+        {{ discipline.name }}
+      </ion-card-header>
+      <ion-card-content>
+        <p>Estado: {{ discipline.status }}</p>
+      </ion-card-content>
+      <ion-item>
+        <ion-button color="black">
+          <ion-label>Frequência: {{ discipline.frequency }}</ion-label>
+        </ion-button>
+        <ion-button color="black">
+          <ion-label>Carga Horária: {{ discipline.classHours }}</ion-label>
+        </ion-button>
+      </ion-item>
+
+      <ion-item>
+        <ion-button color="black">
+          <ion-label>Período: {{ discipline.period }}</ion-label>
+        </ion-button>
+        <ion-button color="black">
+          <ion-label>Nota: {{ discipline.grade }}</ion-label>
+        </ion-button>
+      </ion-item>
+    </ion-card>
+  </div>
+</ion-content>

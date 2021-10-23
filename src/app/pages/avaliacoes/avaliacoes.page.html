@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Avaliações</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+  <div color="light" *ngFor="let partialGrade of partialGrades; index as i">
+
+    <ion-item color="dark">
+      <p>{{ partialGrade.discipline.name }}</p>
+    </ion-item>
+
+    <ion-card *ngIf="partialGrade.evaluations.length === 0" color="tertiary">
+      <ion-card-header>
+        Não tem prova/trabalho
+      </ion-card-header>
+    </ion-card>
+
+    <ion-list inset="true" *ngFor="let evaluation of partialGrade.evaluations; index as a">
+      <ion-item color="tertiary">
+        <ion-label>{{ evaluation.title }}</ion-label>
+      </ion-item>
+      <ion-item-divider *ngIf="evaluation.description">
+        <ion-label color="dark">Descrição: {{ evaluation.description }}</ion-label>
+      </ion-item-divider>
+      <ion-item-divider *ngIf="evaluation.weight">
+        <ion-label color="dark">Peso: {{ evaluation.weight }}</ion-label>
+      </ion-item-divider>
+      <ion-item-divider *ngFor="let grade of evaluation.grades">
+        <ion-label color="dark">Nota: {{ grade.score }}
+        </ion-label>
+      </ion-item-divider>
+    </ion-list>
+
+  </div>
+</ion-content>

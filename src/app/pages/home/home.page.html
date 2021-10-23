@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Horários</ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar color="dark">
+    <ion-tabs>
+      <ion-tab-bar color="dark" slot="bottom">
+        <ion-tab-button (click)="handleTab(1)">
+          <ion-icon name="home"></ion-icon>
+          <ion-label>Hoje</ion-label>
+          <ion-badge>{{ schedulesToday?.periods?.length }}</ion-badge>
+        </ion-tab-button>
+
+        <ion-tab-button (click)="handleTab(2)">
+          <ion-icon name="calendar"></ion-icon>
+          <ion-label>Semana</ion-label>
+          <ion-badge>{{ schedules?.periods?.length }}</ion-badge>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content color="dark">
+  <div *ngIf="tab === 1">
+    <ion-item color="dark">
+      <ion-title>{{ weekday }}</ion-title>
+    </ion-item>
+
+    <ion-card *ngIf="schedulesToday?.periods?.length === 0" color="tertiary">
+      <ion-card-header>
+        Não tem aula
+      </ion-card-header>
+    </ion-card>
+
+    <ion-card *ngFor="let periodToday of schedulesToday.periods; index as i" color="tertiary">
+      <ion-card-header>
+        {{ periodToday.discipline.name }}
+      </ion-card-header>
+      <ion-card-content>
+        <p>Professor(a): {{ periodToday.discipline.teacherName }}</p>
+      </ion-card-content>
+      <ion-item>
+        <ion-button color="tertiary" slot="start">
+          <ion-icon name="clock" slot="start"></ion-icon>
+          {{ periodToday.startAt | date: 'HH:mm' }} -
+          {{ periodToday.endAt | date: 'HH:mm' }}
+        </ion-button>
+        <ion-button color="tertiary" slot="end">
+          <ion-icon name="book" slot="start"></ion-icon>
+          {{periodToday.discipline.code}}
+        </ion-button>
+      </ion-item>
+    </ion-card>
+  </div>
+
+  <div *ngIf="tab === 2">
+    <div *ngFor="let schedule of schedules; index as s">
+      <ion-item color="dark">
+        <ion-title>{{ schedule.day }}</ion-title>
+      </ion-item>
+      <ion-card *ngIf="schedule.periods.length === 0" color="tertiary">
+        <ion-card-header>
+          Não tem aula
+        </ion-card-header>
+      </ion-card>
+
+      <ion-card *ngFor="let period of schedule.periods; index as q" color="tertiary">
+        <ion-card-header>
+          {{ period.discipline.name }}
+        </ion-card-header>
+        <ion-card-content>
+          <p>Professor(a): {{ period.discipline.teacherName }}</p>
+        </ion-card-content>
+        <ion-item>
+          <ion-button color="tertiary" slot="start">
+            <ion-icon name="clock" slot="start"></ion-icon>
+            {{ period.startAt | date: 'HH:mm' }} -
+            {{ period.endAt | date: 'HH:mm' }}
+          </ion-button>
+          <ion-button color="tertiary" slot="end">
+            <ion-icon name="book" slot="start"></ion-icon>
+            {{period.discipline.code}}
+          </ion-button>
+        </ion-item>
+      </ion-card>
+    </div>
+  </div>
+
+</ion-content>
